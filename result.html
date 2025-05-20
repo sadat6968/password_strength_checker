@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Strength Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h2>Password Strength Result</h2>
+
+        <p><strong>Password:</strong> {{ password }}</p>
+        <p class="{{ strength|lower }}"><strong>Strength:</strong> {{ strength }}</p>
+
+        {% if suggestions %}
+            <h3>Suggestions to Improve:</h3>
+            <ul>
+                {% for suggestion in suggestions %}
+                    <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <br>
+        <a href="/"><button>Try Another Password</button></a>
+    </div>
+</body>
+</html>
